@@ -1,0 +1,77 @@
+
+body{
+font-family:'cursive','microsoft yahei';
+border-top:1em pink solid;
+border-radius:5px;
+padding:2em;
+}
+textarea{
+width: 470px;
+height: 170px;
+border:blue dotted 1px;
+border-radius:5px;
+font-size:1.5em;
+box-shadow: 0 0 10px 5px #49A3E2;
+}
+table{
+	width: 350px;
+	border-collapse: collapse;
+}
+td,th{
+	border: 1px solid pink;
+}
+th{
+	color: blue;
+	text-align: right;
+}
+td{
+    overflow-wrap:break-word;
+    text-align: left;
+}
+td[colspan]{
+	text-align: right;
+}
+select,input[readonly],input[autofocus]{
+	width: 160px;
+    padding: 4px 3px 5px 5px;
+    outline: none;
+    color: #74646e;
+    border: 1px solid #C8BFC4;
+    border-radius: 4px;
+    box-shadow: inset 1px 1px 2px #ddd8dc;
+    background-color: #fff;        
+}
+input[autofocus]{
+	width: 210px;
+}
+button {
+  background-image: linear-gradient(to bottom, #34DB55, #2980b9);
+  border-radius: 6px;
+  font-family: 'Courier New';
+  color: #ffffff;
+  font-size: 15px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+  outline: none;
+}
+
+button:hover {
+ 	background: #203cc9;
+  background-image: linear-gradient(to bottom, #203cc9, #f00e87);
+  text-decoration: none;
+}
+.bordered{
+  border: 1px solid blue;
+}
+p em{
+  width:65px;
+  display: inline-block;
+  /*text-align: right;*/
+  font-weight: bold;
+}
+.shop-info{
+  display:inline-block;
+  width:225px;
+  vertical-align:top;
+  margin-left: 12px;
+}

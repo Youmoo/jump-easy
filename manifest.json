@@ -1,0 +1,33 @@
+{
+    "name": "jump-easy",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "icons": {
+        "48": "icon.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "icon.png"
+        },
+        "default_title": "jump-easy",
+        "default_popup": "html/popup.html"
+    },
+    "homepage_url": "http://fuwu.taobao.com/ser/detail.htm?service_code=FW_GOODS-1920059",
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["js/content.js"],
+            "css": [],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
+    "background": {
+        "scripts": ["js/config.js", "js/background.js","js/baidu-yun.js","js/youdao-dictionary.js"],
+        "persistent": true
+    },
+    "chrome_url_overrides": {
+        "newtab": "html/newtab.html"
+    },
+    "permissions": ["tabs", "<all_urls>", "contextMenus"]
+}
