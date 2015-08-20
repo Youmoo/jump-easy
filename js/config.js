@@ -15,7 +15,7 @@ KEY_URL_MAPPINGS = {
         })
     },
     "e": "data:text/html, <html contenteditable>",
-    "g": "http://google.com/ncr",
+    "g": "http://github.com/youmoo",
     "h": "http://l.51yip.com/search/xargs", /*linux命令查询手册*/
     "m": "http://music.163.com",
     "n": function () { /*duplicate current tab */
