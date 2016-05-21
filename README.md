@@ -3,6 +3,8 @@ jump-esay
 
 chrome 插件，快速跳转到预定义的页面
 
+![](jump-easy.png)
+
 ### 使用方法
 	[下载zip文件](archive/master.zip)并解压，打开chrome插件管理页面进行安装
 	安装后，打开任一页面，按下快捷键g，即打开google首页；

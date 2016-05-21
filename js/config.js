@@ -2,12 +2,13 @@ console.log("from config.js");
 
 /**
  * 按键到动作的映射
- * */
+ */
 KEY_URL_MAPPINGS = {
     "0": "http://note.youdao.com/",
     "a": "http:api.taobao.com",
     "b": "http://lofter.com",
-    "c": function () { /*close current tab*/
+    "c": function () {
+        /*close current tab*/
         chrome.tabs.query({
             active: true
         }, function (tabs) {
@@ -16,9 +17,11 @@ KEY_URL_MAPPINGS = {
     },
     "e": "data:text/html, <html contenteditable>",
     "g": "http://github.com/youmoo",
-    "h": "http://l.51yip.com/search/xargs", /*linux命令查询手册*/
+    "h": "http://l.51yip.com/search/xargs",
+    /*linux命令查询手册*/
     "m": "http://music.163.com",
-    "n": function () { /*duplicate current tab */
+    "n": function () {
+        /*duplicate current tab */
         chrome.tabs.query({
             active: true
         }, function (tabs) {
@@ -31,7 +34,8 @@ KEY_URL_MAPPINGS = {
     },
     "t": "http://tmall.com",
     "T": "http://taobao.com",
-    "w": function () { /*close current tab*/
+    "w": function () {
+        /*close current tab*/
         chrome.tabs.query({
             active: true
         }, function (tabs) {

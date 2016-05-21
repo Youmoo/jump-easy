@@ -3,31 +3,79 @@
 <head>
     <meta charset="utf-8">
     <title>popup</title>
-    <script type="text/javascript" src="../../js/config.js"></script>
-    <script type="text/javascript" src="../../js/popup.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../css/main.css">
+    <script type="text/javascript" src="../js/config.js">
+    </script>
+    <script type="text/javascript" src="../js/popup.js">
+    </script>
+    <link rel="stylesheet" href="../css/bulma.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <style>
+        body {
+            width: 380px;
+            padding: 20px;
+        }
+
+        body > section {
+            margin-bottom: 15px;
+        }
+
+        input:invalid ~ span {
+            display: block;
+        }
+
+        input:valid ~ span {
+            display: none;
+        }
+
+        pre {
+            overflow: auto;
+        }
+    </style>
 </head>
 <body>
 
-<form>
-    <h3>Shortcut</h3>
-
-    <p><label for="key">Key:</label><input type="text" name="key" id="key" maxlength="1" required/></p>
-
-    <p><label for="url">Url:</label><input type="url" name="url" id="url" required></p>
-
-    <p><button>save</button></p>
-
-</form>
-
 <section>
-    <h2>Preset config</h2>
-    <pre id="preset-config"></pre>
+    <form>
+        <h3 class="title">Add Shortcut</h3>
+
+        <label class="label" for="key">Key</label>
+        <p class="control has-icon">
+            <input class="input" type="text" name="key" id="key" maxlength="1" autofocus required>
+            <i class="fa fa-keyboard-o"></i>
+            <span class="help is-danger">This field is required</span>
+        </p>
+
+        <label class="label" for="url">Url</label>
+        <p class="control has-icon">
+            <input class="input" type="url" name="url" id="url" required>
+            <i class="fa fa-link"></i>
+            <span class="help is-danger">This field should be a qualified url</span>
+
+        </p>
+
+        <p class="control">
+            <button class="button is-primary">save</button>
+        </p>
+
+    </form>
 </section>
 
 <section>
-    <h2>User defined config</h2>
-    <pre id="user-defined-config"></pre>
+    <article>
+        <header class="title">Preset config</header>
+        <main>
+            <pre id="preset-config" class="box"></pre>
+        </main>
+    </article>
+</section>
+
+<section>
+    <article>
+        <header class="title">User defined config</header>
+        <main>
+            <pre id="user-defined-config" class="box"></pre>
+        </main>
+    </article>
 </section>
 
 </body>

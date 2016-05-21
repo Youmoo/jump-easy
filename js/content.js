@@ -4,21 +4,31 @@ window.addEventListener("keypress", handleKeyPress, true);
 window.addEventListener("paste", handlePaste, true);
 
 function handleKeyPress(e) {
+    console.log({
+        which: e.witch,
+        ctrl: e.ctrlKey,
+        shift: e.shiftKey,
+        alt: e.altKey,
+        meta: e.metaKey
+    });
+    
     var ae = document.activeElement;
-    if (ae.contentEditable == "true"/*tencent email*/ || ("value" in ae)) return;
+    if (ae.contentEditable == "true"/*tencent email*/ || ("value" in ae))
+        return;
     chrome.runtime.sendMessage({
         key: String.fromCharCode(e.keyCode),
         selection: window.getSelection() + ""
-    }, function (response) {
+    }, function(response) {
         console.log(response);
     });
 }
 
 function handlePaste(e) {
     var items = e.clipboardData.items;
-    console.log(JSON.stringify(items)); // mime types
+    // mime types
+    console.log(JSON.stringify(items));
     if (items) {
-        items[0].getAsString(function (nick) {
+        items[0].getAsString(function(nick) {
             console.log(nick);
             shopNick = nick.split(":")[0];
         });
