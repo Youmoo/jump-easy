@@ -13,7 +13,7 @@ function handleKeyPress(e) {
     });
     
     var ae = document.activeElement;
-    if (ae.contentEditable == "true"/*tencent email*/ || ("value" in ae))
+    if (ae.closest('[contenteditable=true]')/*tencent email*/ || ("value" in ae))
         return;
     chrome.runtime.sendMessage({
         key: String.fromCharCode(e.keyCode),
