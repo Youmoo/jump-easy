@@ -11,20 +11,25 @@ function handleKeyPress(e) {
     //     alt: e.altKey,
     //     meta: e.metaKey
     // });
+    const key = String.fromCharCode(e.keyCode);
+    const {domain}=document;
 
-    var ae = document.activeElement;
-    if (ae && ae.closest('[contenteditable=true]')/*tencent email*/ || ("value" in ae))
+    const ae = document.activeElement;
+    if (ae && (ae.closest('[contenteditable=true]')/*tencent email*/ || ("value" in ae))) {
         return;
+    }
+
     chrome.runtime.sendMessage({
-        key: String.fromCharCode(e.keyCode),
+        key,
+        domain,
         selection: window.getSelection() + ""
     }, function (response) {
-        console.log(response);
+        response && console.info('%cjump-easy:', 'color:tomato', response);
     });
 }
 
 function handlePaste(e) {
-    var items = e.clipboardData.items;
+    const items = e.clipboardData.items;
     // mime types
     console.log(JSON.stringify(items));
     if (items) {

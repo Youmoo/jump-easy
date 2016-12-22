@@ -15,6 +15,16 @@ KEY_URL_MAPPINGS = {
             chrome.tabs.remove(tabs[0].id);
         })
     },
+    "d": function ({domain}, reply) {
+        // 将一个domain设置为启用快捷键
+        localStorage[domain] = false;
+        reply(`对 ${domain} 启用快捷键`);
+    },
+    "D": function ({domain}, reply) {
+        // 将一个domain设置为禁用快捷键
+        localStorage[domain] = true;
+        reply(`对 ${domain} 禁用快捷键`);
+    },
     "e": "data:text/html, <html contenteditable>",
     "g": "http://github.com/youmoo",
     "h": "http://l.51yip.com/search/xargs",
@@ -47,21 +57,17 @@ KEY_URL_MAPPINGS = {
 };
 
 function getUserDefinedConfig() {
-    var data = localStorage.userDefinedConfig || '{}';
+    const data = localStorage.userDefinedConfig || '{}';
     return JSON.parse(data);
 }
+
 function addUserDefinedConfig(key, value) {
-    var config = getUserDefinedConfig();
+    const config = getUserDefinedConfig();
     config[key] = value;
     localStorage.userDefinedConfig = JSON.stringify(config);
 }
 
 function getMergedConfig() {
-    var userDefinedConfig = getUserDefinedConfig();
-    var keys = Object.keys(KEY_URL_MAPPINGS).concat(Object.keys(userDefinedConfig));
-    return keys.reduce(function (config, key) {
-        var value = userDefinedConfig[key] || KEY_URL_MAPPINGS[key];
-        value && (config[key] = value);
-        return config;
-    }, {});
+    const userDefinedConfig = getUserDefinedConfig();
+    return Object.assign({}, KEY_URL_MAPPINGS, userDefinedConfig);
 }

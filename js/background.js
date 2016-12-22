@@ -1,8 +1,19 @@
 console.log("from background.js");
+
+const escapedKeys = new Set(['d', 'D']);
+
 /*监听并处理消息*/
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    var config = getMergedConfig();
-    var route = config[request.key] || request.route;
+
+    const {domain, key}=request;
+    if (!escapedKeys.has(key) && localStorage[domain] === 'true') {
+        sendResponse(`${domain} 已禁用快捷键，按 d 键可重新启用`);
+        return;
+    }
+
+    const config = getMergedConfig();
+    const route = config[request.key] || request.route;
+
     switch (typeof route) {
         case "string":
             open(route);
@@ -11,7 +22,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             openTab(route, request.loginId);
             break;
         case "function":
-            route(request.selection || request.loginId);
+            route(request, sendResponse);
             break;
         case "undefined":
             sendResponse({
