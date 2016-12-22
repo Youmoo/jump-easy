@@ -4,21 +4,21 @@ window.addEventListener("keypress", handleKeyPress, true);
 window.addEventListener("paste", handlePaste, true);
 
 function handleKeyPress(e) {
-    console.log({
-        which: e.witch,
-        ctrl: e.ctrlKey,
-        shift: e.shiftKey,
-        alt: e.altKey,
-        meta: e.metaKey
-    });
-    
+    // console.log({
+    //     which: e.witch,
+    //     ctrl: e.ctrlKey,
+    //     shift: e.shiftKey,
+    //     alt: e.altKey,
+    //     meta: e.metaKey
+    // });
+
     var ae = document.activeElement;
-    if (ae.closest('[contenteditable=true]')/*tencent email*/ || ("value" in ae))
+    if (ae && ae.closest('[contenteditable=true]')/*tencent email*/ || ("value" in ae))
         return;
     chrome.runtime.sendMessage({
         key: String.fromCharCode(e.keyCode),
         selection: window.getSelection() + ""
-    }, function(response) {
+    }, function (response) {
         console.log(response);
     });
 }
@@ -28,7 +28,7 @@ function handlePaste(e) {
     // mime types
     console.log(JSON.stringify(items));
     if (items) {
-        items[0].getAsString(function(nick) {
+        items[0].getAsString(function (nick) {
             console.log(nick);
             shopNick = nick.split(":")[0];
         });
