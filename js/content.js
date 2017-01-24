@@ -15,7 +15,7 @@ function handleKeyPress(e) {
     const {domain}=document;
 
     const ae = document.activeElement;
-    if (ae && (ae.closest('[contenteditable=true]')/*tencent email*/ || ("value" in ae))) {
+    if (ae && (ae.isContentEditable/*tencent email*/ || ("value" in ae))) {
         return;
     }
 
